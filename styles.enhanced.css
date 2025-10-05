@@ -115,3 +115,8 @@ body{background-color:var(--bg)}
 .nav-list{position:static}    /* avoid manual right offset */
 .navbar a{margin:0 4px}
 /* footer was absolute -> fixed + main padding prevents overlap */
+
+#hp {
+  float: left;
+  margin: 0 15px 0 0;
+}
