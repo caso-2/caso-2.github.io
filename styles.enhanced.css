@@ -28,6 +28,7 @@ body{
     var(--bg);
   font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
   line-height:1.6;
+  background-attachment: fixed;
 }
 main{
   padding:24px 20px 88px; /* bottom padding to clear footer */
@@ -90,9 +91,9 @@ a{ color:var(--accent); text-underline-offset:2px; text-decoration-thickness:.1e
 a:hover{ color:#4f46e5 }
 a:focus-visible{ outline:none; box-shadow:0 0 0 var(--ring) rgba(34,211,238,.55); border-radius:6px }
 
-/* --- Utility card (optional use) --- */
+/* --- Utility card --- */
 .card{ background:#fff; border-radius:var(--radius); box-shadow:var(--shadow-lg);
-  padding:20px; border:1px solid rgba(2,6,23,.06) }
+  padding:20px; border:1px solid rgba(2,6,23,.06); width: 100%; max-width: 800px; }
 
 /* --- Responsive --- */
 @media (max-width: 768px){
@@ -108,7 +109,7 @@ a:focus-visible{ outline:none; box-shadow:0 0 0 var(--ring) rgba(34,211,238,.55)
      transition-duration:.01ms !important; scroll-behavior:auto !important }
 }
 
-/* --- Keep your original selectors compatible (light tweaks) --- */
+/* --- Keep original selectors compatible (light tweaks) --- */
 html{height:100%}
 body{background-color:var(--bg)}
 .navbar{height:auto}          /* replaces fixed 7% height */
@@ -116,7 +117,129 @@ body{background-color:var(--bg)}
 .navbar a{margin:0 4px}
 /* footer was absolute -> fixed + main padding prevents overlap */
 
+.about {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* space between the image and the text */
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px; /* space on the left and right of the whole about section */
+}
+
+.about-image {
+    flex-shrink: 0; /* Prevent the image from shrinking */
+}
+
 #hp {
-  float: left;
-  margin: 0 15px 0 0;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; /* Make the image round */
+    object-fit: cover;
+}
+
+.about-text {
+    flex-grow: 1;
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #d1d5db; /* cool-gray-300 */
+    border-radius: 8px;
+    background-color: #f9fafb; /* cool-gray-50 */
+    color: var(--text);
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+#contact-form input[type="text"]:focus,
+#contact-form input[type="email"]:focus,
+#textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, .2);
+}
+
+#textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+#contact-form label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* Style the submit button */
+#contact-form input[type="submit"] {
+    width: auto; /* keep button size natural */
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.submit-button, .download-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  text-decoration: none;
+  transition:transform .15s ease, background-color .25s ease, box-shadow .25s ease, background-size .25s ease;
+  outline:none;
+}
+
+.submit-button:hover, .download-button:hover {
+    transform:translateY(-1px);
+    background:var(--accent-2);
+    box-shadow:var(--shadow-sm);
+}
+
+.submit-button:active, .download-button:active {
+    transform:translateY(0)
+}
+
+.submit-button:focus-visible, .download-button:focus-visible {
+    box-shadow:0 0 0 var(--ring) rgba(99,102,241,.45)
+}
+
+.submit-button img, .download-button img {
+    height: 1em;
+}
+
+.project {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.project img {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.project-details {
+    flex: 1;
+}
+
+.button-container {
+    text-align: right;
+}
+
+.entry-title, .entry-info, .entry-desciption {
+    margin: 0;
+    padding: 0;
 }
